@@ -8,9 +8,9 @@ const AboutUs = () => {
         <div className="row">
           {/* Texte à gauche */}
           <div className="text-left">
-            <h2>Our Vision</h2>
+            <h2>About us</h2>
             <p>
-              We strive to create innovative solutions that empower individuals and businesses to thrive in a rapidly evolving world. Our mission is to drive meaningful change through creativity, technology, and collaboration.
+              We created this blog to make tech less intimidating and more accessible for beginners. Whether you're just getting started or curious about how things work, we’re here to guide you step by step—with simple language, real-world examples, and zero judgment.
             </p>
           </div>
 
