@@ -1,34 +1,39 @@
 import React, { useState } from "react";
-import { Modal, Box } from "@mui/material";
+import { Modal, Box, Snackbar, Alert } from "@mui/material";
 
 
 const Navbar = () => {
   const [loginModalOpen, setLoginModalOpen] = useState(false);
   const [signinModalOpen, setSigninModalOpen] = useState(false);
   const [addBlogModalOpen, setAddBlogModalOpen] = useState(false);
+  const [notificationOpen, setNotificationOpen] = useState(false)
 
   const handleOpenLogin = (state) => setLoginModalOpen(state);
   const handleOpenSignin = (state) => setSigninModalOpen(state);
-  const rejisterUser = async (e) => {
+  const handleAddBlogModalOpen = (state) => setAddBlogModalOpen(state);
+  
+  const registerUser = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const data = {
-      username: formData.get("username"),
+      name: formData.get("username"),
       password: formData.get("password")
     };
     try {
-      let response = await fetch("http://localhost:5000/api/auth/register", {
+      let response = await fetch("http://localhost:5000/user/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
-      });
+      }).then((e) => {
+        handleOpenSignin(false);
+        setNotificationOpen(true);
+      }) ;
     } catch (error) {
       console.error("Error registering user:", error);
 
     }
-    const handleAddBlogModalOpen = (state) => setAddBlogModalOpen(state);
 
   }
 
@@ -175,7 +180,7 @@ const Navbar = () => {
               gap: '1.5rem',
               width: '100%',
             }}
-            onSubmit={rejisterUser}
+            onSubmit={registerUser}
           >
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               <label htmlFor="username" style={{ fontWeight: 'bold' }}>Username</label>
@@ -363,7 +368,11 @@ const Navbar = () => {
         </Box>
       </Modal>
 
-
+<Snackbar anchorOrigin={{ vertical:'top', horizontal:'center'}} open={notificationOpen} autoHideDuration={6000} onClose={() => setNotificationOpen(false)}>
+  <Alert onClose={() => setNotificationOpen(false)} severity="success">
+    User created successfully !
+  </Alert>
+</Snackbar>
     </>
   );
 };
