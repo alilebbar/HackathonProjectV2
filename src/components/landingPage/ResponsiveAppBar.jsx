@@ -69,11 +69,12 @@ const Navbar = () => {
     const formData = new FormData(e.target);
     const data = {
       title: formData.get("title"),
-      content: formData.get("content"),
+      image: "https://picsum.photos/300",
+      text: formData.get("content"),
     };
     try {
       const token = JSON.parse(localStorage.getItem("user"));
-      const response = await fetch("http://localhost:5000/blog/add", {
+      const response = await fetch("http://localhost:5000/post/create", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
