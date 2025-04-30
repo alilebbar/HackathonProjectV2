@@ -299,3 +299,43 @@
 .navbar .auth-buttons .btn:hover {
   opacity: 0.8; /* Effet de survol sur les boutons */
 }
+/* App.css */
+
+/* Styles généraux pour les boutons */
+.btn {
+  padding: 10px 20px;
+  background-color: #1E90FF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #45a049;
+}
+
+.login {
+  background-color: #1E90FF;
+}
+
+.login:hover {
+  background-color: #1C86EE;
+}
+
+.signup {
+  background-color: #FF6347;
+}
+
+.signup:hover {
+  background-color: #FF4500;
+}
+
+.cancel {
+  background-color: #f44336;
+}
+
+.cancel:hover {
+  background-color: #e53935;
+}
