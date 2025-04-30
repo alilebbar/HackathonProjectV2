@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 const BlogPosts = () => {
   const [posts, setPosts] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem("user"));
   useEffect(() => {
 
     const fetchUser = async () => {
@@ -28,13 +29,33 @@ const BlogPosts = () => {
 
     fetchUser();
   }, []);
+  const deleteBlog = async (id) => {
+    let token = localStorage.getItem("user")
+    try {
+      const res = await fetch(`http://localhost:5000/post/${id}`, {
+        method: 'DELETE',
+        headers: new Headers({
+          "ngrok-skip-browser-warning": "69420",
+          "Authorization": `Bearer ${token}`
+
+        }),
+      });
+
+
+      const data = await res.json();
+      console.log(data)
+      setPosts(posts.filter((post) => post.id !== id));
+    } catch (err) {
+      console.error(err);
+    }
+  };
   return (
     <div className="container" id="blog">
       <h2 id="blogT">Our Blogposts</h2>
       {/* Première ligne */}
       <div className="row d-flex justify-content-start">
-        { !loading ? posts.map((post, index) => <div className="col-md-4">
-<div className="service-desc">
+        {!loading ? posts.map((post, index) => <div className="col-md-4">
+          <div className="service-desc">
             <img
               src="https://picsum.photos/300/200"
               alt="How to Use a Computer Mouse"
@@ -42,6 +63,9 @@ const BlogPosts = () => {
             />
             <h3>{post.title}</h3>
             <p>{post.text}</p>
+            {isAuthenticated ? (
+              <button className="btn btn-primary" onClick={() => { deleteBlog(post._id) }} >Delete</button>
+            ) : ""}
           </div>
         </div>) : ""}
         {/* <div className="col-md-4">
