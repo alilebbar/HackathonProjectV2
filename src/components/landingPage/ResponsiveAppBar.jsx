@@ -207,121 +207,182 @@ const Navbar = () => {
       {/* SIGNUP MODAL */}
       <Modal open={signinModalOpen} onClose={() => handleOpenSignin(false)}>
         <Box sx={{ ...modalStyle }}>
-        <form
-             style={{
-               display: 'flex',
-               flexDirection: 'column',
-               gap: '1.5rem',
-               width: '100%',
-             }}
-             onSubmit={registerUser}
-           >
-             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-               <label htmlFor="username" style={{ fontWeight: 'bold' }}>Username</label>
-               <input
-                 type="text"
-                 name="username"
-                 placeholder="Choose a username"
-                 required
-                 style={{
-                   padding: '10px',
-                   border: '1px solid #ccc',
-                   borderRadius: '5px',
-                   fontSize: '16px'
-                 }}
-               />
- 
-               <label htmlFor="email" style={{ fontWeight: 'bold' }}>Email</label>
-               <input
-                 type="email"
-                 name="email"
-                 placeholder="Enter your email"
-                 required
-                 style={{
-                   padding: '10px',
-                   border: '1px solid #ccc',
-                   borderRadius: '5px',
-                   fontSize: '16px'
-                 }}
-               />
- 
-               <label htmlFor="password" style={{ fontWeight: 'bold' }}>Password</label>
-               <input
-                 type="password"
-                 name="password"
-                 placeholder="Create a password"
-                 required
-                 style={{
-                   padding: '10px',
-                   border: '1px solid #ccc',
-                   borderRadius: '5px',
-                   fontSize: '16px'
-                 }}
-               />
- 
-               <label htmlFor="confirmPassword" style={{ fontWeight: 'bold' }}>Confirm Password</label>
-               <input
-                 type="password"
-                 name="confirmPassword"
-                 placeholder="Repeat your password"
-                 required
-                 style={{
-                   padding: '10px',
-                   border: '1px solid #ccc',
-                   borderRadius: '5px',
-                   fontSize: '16px'
-                 }}
-               />
- 
-               <button
-                 type="submit"
-                 style={{
-                   backgroundColor: '#1976d2',
-                   color: 'white',
-                   padding: '10px',
-                   border: 'none',
-                   borderRadius: '5px',
-                   fontSize: '16px',
-                   cursor: 'pointer',
-                 }}
- 
-               >
-                 Sign Up
-               </button>
-             </div>
- 
-             <div>
-               <button
-                 type="button"
-                 style={{
-                   backgroundColor: 'rgb(141, 0, 0)',
-                   border: 'none',
-                   padding: '8px 12px',
-                   borderRadius: '5px',
-                   cursor: 'pointer',
-                   width: '100%',
-                   color: 'white',
-                 }}
-                 onClick={() => handleOpenSignin(false)}
-               >
-                 Cancel
-               </button>
- 
-             </div>
-             </form>
+          <form
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '1.5rem',
+              width: '100%',
+            }}
+            onSubmit={registerUser}
+          >
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+              <label htmlFor="username" style={{ fontWeight: 'bold' }}>Username</label>
+              <input
+                type="text"
+                name="username"
+                placeholder="Choose a username"
+                required
+                style={{
+                  padding: '10px',
+                  border: '1px solid #ccc',
+                  borderRadius: '5px',
+                  fontSize: '16px'
+                }}
+              />
+
+              <label htmlFor="email" style={{ fontWeight: 'bold' }}>Email</label>
+              <input
+                type="email"
+                name="email"
+                placeholder="Enter your email"
+                required
+                style={{
+                  padding: '10px',
+                  border: '1px solid #ccc',
+                  borderRadius: '5px',
+                  fontSize: '16px'
+                }}
+              />
+
+              <label htmlFor="password" style={{ fontWeight: 'bold' }}>Password</label>
+              <input
+                type="password"
+                name="password"
+                placeholder="Create a password"
+                required
+                style={{
+                  padding: '10px',
+                  border: '1px solid #ccc',
+                  borderRadius: '5px',
+                  fontSize: '16px'
+                }}
+              />
+
+              <label htmlFor="confirmPassword" style={{ fontWeight: 'bold' }}>Confirm Password</label>
+              <input
+                type="password"
+                name="confirmPassword"
+                placeholder="Repeat your password"
+                required
+                style={{
+                  padding: '10px',
+                  border: '1px solid #ccc',
+                  borderRadius: '5px',
+                  fontSize: '16px'
+                }}
+              />
+
+              <button
+                type="submit"
+                style={{
+                  backgroundColor: '#1976d2',
+                  color: 'white',
+                  padding: '10px',
+                  border: 'none',
+                  borderRadius: '5px',
+                  fontSize: '16px',
+                  cursor: 'pointer',
+                }}
+
+              >
+                Sign Up
+              </button>
+            </div>
+
+            <div>
+              <button
+                type="button"
+                style={{
+                  backgroundColor: 'rgb(141, 0, 0)',
+                  border: 'none',
+                  padding: '8px 12px',
+                  borderRadius: '5px',
+                  cursor: 'pointer',
+                  width: '100%',
+                  color: 'white',
+                }}
+                onClick={() => handleOpenSignin(false)}
+              >
+                Cancel
+              </button>
+
+            </div>
+          </form>
         </Box>
       </Modal>
 
       {/* ADD BLOG MODAL */}
       <Modal open={addBlogModalOpen} onClose={() => handleAddBlogModalOpen(false)}>
         <Box sx={{ ...modalStyle }}>
-          <form onSubmit={submitBlog} style={formStyle}>
-            <label>Title</label>
-            <input type="text" name="title" required />
-            <label>Content</label>
-            <textarea name="content" rows={10} required />
-            <button type="submit">Submit Blog</button>
-            <button type="button" onClick={() => handleAddBlogModalOpen(false)}>Cancel</button>
+          <form
+            onSubmit={submitBlog}
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '1.5rem',
+              width: '100%',
+            }}
+          >
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+              <label htmlFor="username" style={{ fontWeight: 'bold' }}>Title</label>
+              <input
+                type="text"
+                name="title"
+                placeholder="Enter the title"
+                required
+                style={{
+                  padding: '10px',
+                  border: '1px solid #ccc',
+                  borderRadius: '5px',
+                  fontSize: '16px'
+                }}
+              />
+
+              <label htmlFor="email" style={{ fontWeight: 'bold' }}>Content</label>
+              <textarea style={{
+                padding: '10px',
+                border: '1px solid #ccc',
+                borderRadius: '5px',
+                fontSize: '16px',
+                resize: 'none'
+              }} rows={10} placeholder="Enter the content" name="content" id="">
+              </textarea>
+
+              <button
+                type="submit"
+                style={{
+                  backgroundColor: '#1976d2',
+                  color: 'white',
+                  padding: '10px',
+                  border: 'none',
+                  borderRadius: '5px',
+                  fontSize: '16px',
+                  cursor: 'pointer',
+                }}
+              >
+                Add
+              </button>
+            </div>
+
+            <div>
+              <button
+                type="button"
+                style={{
+                  backgroundColor: 'rgb(141, 0, 0)',
+                  border: 'none',
+                  padding: '8px 12px',
+                  borderRadius: '5px',
+                  cursor: 'pointer',
+                  width: '100%',
+                  color: 'white',
+                }}
+                onClick={() => handleAddBlogModalOpen(false)}
+              >
+                Cancel
+              </button>
+
+            </div>
           </form>
         </Box>
       </Modal>
