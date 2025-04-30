@@ -11,7 +11,7 @@ const Navbar = () => {
   const handleOpenLogin = (state) => setLoginModalOpen(state);
   const handleOpenSignin = (state) => setSigninModalOpen(state);
   const handleAddBlogModalOpen = (state) => setAddBlogModalOpen(state);
-  
+
   const registerUser = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -20,7 +20,7 @@ const Navbar = () => {
       password: formData.get("password")
     };
     try {
-      let response = await fetch("http://localhost:5000/user/register", {
+      let response = await fetch("https://0dd3-41-141-46-12.ngrok-free.app/user/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -29,9 +29,34 @@ const Navbar = () => {
       }).then((e) => {
         handleOpenSignin(false);
         setNotificationOpen(true);
-      }) ;
+      });
     } catch (error) {
       console.error("Error registering user:", error);
+
+    }
+
+  }
+  const addBlog = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const data = {
+      title: formData.get("title"),
+      image: "https://picsum.photos/300",
+      text: formData.get("content")
+    };
+    try {
+      let response = await fetch("https://0dd3-41-141-46-12.ngrok-free.app/post/create", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }).then((e) => {
+        setNotificationOpen(true);
+        setAddBlogModalOpen(false);
+      });
+    } catch (error) {
+      console.error("Error adding user:", error);
 
     }
 
@@ -297,19 +322,19 @@ const Navbar = () => {
           }}
         >
           <form
-            method="post"
             style={{
               display: 'flex',
               flexDirection: 'column',
               gap: '1.5rem',
               width: '100%',
             }}
+            onSubmit={addBlog}
           >
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-              <label htmlFor="username" style={{ fontWeight: 'bold' }}>Title</label>
+              <label htmlFor="title" style={{ fontWeight: 'bold' }}>Title</label>
               <input
                 type="text"
-                name="username"
+                name="title"
                 placeholder="Enter the title"
                 required
                 style={{
@@ -320,7 +345,7 @@ const Navbar = () => {
                 }}
               />
 
-              <label htmlFor="email" style={{ fontWeight: 'bold' }}>Content</label>
+              <label htmlFor="content" style={{ fontWeight: 'bold' }}>Content</label>
               <textarea style={{
                 padding: '10px',
                 border: '1px solid #ccc',
@@ -368,11 +393,11 @@ const Navbar = () => {
         </Box>
       </Modal>
 
-<Snackbar anchorOrigin={{ vertical:'top', horizontal:'center'}} open={notificationOpen} autoHideDuration={6000} onClose={() => setNotificationOpen(false)}>
-  <Alert onClose={() => setNotificationOpen(false)} severity="success">
-    User created successfully !
-  </Alert>
-</Snackbar>
+      <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'center' }} open={notificationOpen} autoHideDuration={6000} onClose={() => setNotificationOpen(false)}>
+        <Alert onClose={() => setNotificationOpen(false)} severity="success">
+          Operation done successfully !
+        </Alert>
+      </Snackbar>
     </>
   );
 };

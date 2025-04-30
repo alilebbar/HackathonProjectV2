@@ -36,7 +36,7 @@ const BlogPosts = () => {
         { !loading ? posts.map((post, index) => <div className="col-md-4">
 <div className="service-desc">
             <img
-              src="https://tse3.mm.bing.net/th?id=OIP.yL6mtrIbj-UoPJE_DwUUFgHaEJ&pid=Api&P=0&h=180"
+              src="https://picsum.photos/300/200"
               alt="How to Use a Computer Mouse"
               className="img-fluid"
             />
