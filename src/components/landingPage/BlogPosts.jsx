@@ -4,29 +4,29 @@ import { useEffect, useState } from "react";
 const BlogPosts = (props) => {
   const [posts, setPosts] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  const fetchPosts = async () => {
+    try {
+      const res = await fetch('http://localhost:5000/post/all', {
+        headers: new Headers({
+          "ngrok-skip-browser-warning": "69420",
+        }),
+      });
+      if (!res.ok) throw new Error('Failed to fetch user');
+
+      const data = await res.json();
+      console.log(data)
+      setPosts(data);
+    } catch (err) {
+      console.error(err);
+      setPosts(null);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-
-    const fetchUser = async () => {
-      try {
-        const res = await fetch('http://localhost:5000/post/all', {
-          headers: new Headers({
-            "ngrok-skip-browser-warning": "69420",
-          }),
-        });
-        if (!res.ok) throw new Error('Failed to fetch user');
-
-        const data = await res.json();
-        console.log(data)
-        setPosts(data);
-      } catch (err) {
-        console.error(err);
-        setPosts(null);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchUser();
+    fetchPosts();
   }, []);
   const deleteBlog = async (id) => {
     let token = localStorage.getItem("user")
@@ -43,7 +43,7 @@ const BlogPosts = (props) => {
 
       const data = await res.json();
       console.log(data)
-      setPosts(posts.filter((post) => post.id !== id));
+      fetchPosts();
     } catch (err) {
       console.error(err);
     }
@@ -53,7 +53,7 @@ const BlogPosts = (props) => {
       <h2 id="blogT">Our Blogposts</h2>
       {/* Première ligne */}
       <div className="row d-flex justify-content-start">
-        {!loading ? posts.map((post, index) => <div className="col-md-4">
+        {!loading ? posts?.map((post, index) => <div className="col-md-4">
           <div className="service-desc">
             <img
               src="https://picsum.photos/300/200"
