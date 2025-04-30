@@ -15,16 +15,16 @@ function HeroHeader() {
         color: 'white',
         textAlign: 'center',
         backgroundColor: 'rgba(0,0,0,0.5)', // fallback
-        
+
       }}
       id='home'
     >
       <Container>
         <Typography variant="h2" component="h1" fontWeight="bold" gutterBottom>
-          Bienvenue sur notre site
+          Tech Made Simple.
         </Typography>
         <Typography variant="h5" component="p" gutterBottom>
-          Nous construisons des solutions innovantes pour l'avenir.
+          Confused by code? Intimidated by tech? You're not alone. This blog breaks down complex topics into fun, easy-to-understand guides—no jargon, no pressure.
         </Typography>
         <Button
           variant="contained"
@@ -33,7 +33,7 @@ function HeroHeader() {
           sx={{ mt: 4 }}
           href="#contact"
         >
-          Nous contacter
+          Write for us
         </Button>
       </Container>
     </Box>
