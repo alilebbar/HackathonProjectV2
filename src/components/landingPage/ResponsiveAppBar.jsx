@@ -121,18 +121,84 @@ const Navbar = () => {
       {/* LOGIN MODAL */}
       <Modal open={loginModalOpen} onClose={() => handleOpenLogin(false)}>
         <Box sx={{ ...modalStyle }}>
-          <form onSubmit={loginUser} style={formStyle}>
-            <label>Username</label>
-            <input type="text" name="uname" required />
-            <label>Password</label>
-            <input type="password" name="psw" required />
-            <label>
-              <input type="checkbox" defaultChecked name="remember" /> Remember me
-            </label>
-            <button type="submit">Login</button>
-            <div style={bottomModal}>
-              <button type="button" onClick={() => handleOpenLogin(false)}>Cancel</button>
-              <span className="psw">Forgot <a href="#">password?</a></span>
+          <form onSubmit={loginUser} style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '1.5rem',
+            width: '100%',
+          }}>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+              <label htmlFor="uname" style={{ fontWeight: 'bold' }}>Username</label>
+              <input
+                type="text"
+                placeholder="Enter Username"
+                name="uname"
+                required
+                style={{
+                  padding: '10px',
+                  border: '1px solid #ccc',
+                  borderRadius: '5px',
+                  fontSize: '16px'
+                }}
+              />
+
+              <label htmlFor="psw" style={{ fontWeight: 'bold' }}>Password</label>
+              <input
+                type="password"
+                placeholder="Enter Password"
+                name="psw"
+                required
+                style={{
+                  padding: '10px',
+                  border: '1px solid #ccc',
+                  borderRadius: '5px',
+                  fontSize: '16px'
+                }}
+              />
+
+              <label style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px' }}>
+                <input
+                  type="checkbox"
+                  defaultChecked
+                  name="remember"
+                />
+                Remember me
+              </label>
+
+              <button type="submit" style={{
+                backgroundColor: '#1976d2',
+                color: 'white',
+                padding: '10px',
+                border: 'none',
+                borderRadius: '5px',
+                fontSize: '16px',
+                cursor: 'pointer'
+              }}>
+                Login
+              </button>
+            </div>
+
+            <div style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              backgroundColor: '#f1f1f1',
+              padding: '10px',
+              borderRadius: '5px',
+            }}>
+              <button type="button" style={{
+                backgroundColor: '#e0e0e0',
+                border: 'none',
+                padding: '8px 12px',
+                borderRadius: '5px',
+                cursor: 'pointer',
+              }}>
+                Cancel
+              </button>
+              <span className="psw" style={{ fontSize: '14px' }}>
+                Forgot <a href="#" style={{ color: '#1976d2' }}>password?</a>
+              </span>
             </div>
           </form>
         </Box>
