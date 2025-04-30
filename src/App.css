@@ -1,0 +1,301 @@
+
+.section {
+  padding: 30px 0;
+  background-color: #badaeb;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.text-left {
+  flex: 1;
+  padding: 20px;
+}
+
+.text-left h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.text-left p {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+.image-right {
+  flex: 1;
+  padding: 20px;
+}
+
+.image-right img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column;
+    text-align: center;
+
+  }
+
+  .image-right {
+    margin-top: 20px;
+  }
+}
+
+/* Container pour les blogs */
+.containerb {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: #d1e5f0;
+ 
+}
+
+/* Style pour les colonnes de blog */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/* Style pour chaque colonne de blog */
+.col-md-4 {
+  width: 30%;
+  margin-bottom: 30px; /* Espacement entre les lignes */
+  box-sizing: border-box;
+}
+
+/* Style pour l'image dans chaque blog */
+.service-desc img {
+  width: 100%;
+  height: auto; /* L'image s'ajuste à la largeur de la colonne */
+  border-radius: 8px;
+}
+
+/* Titre du blog */
+.service-desc h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 15px;
+  color: #333;
+  text-align: center;
+}
+
+/* Paragraphe du blog */
+.service-desc p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #666;
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* Ajout de bordure, d'ombre et d'espacement dans chaque bloc */
+.service-desc {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+/* Effet de survol pour les blocs de service */
+.service-desc:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design: sur petits écrans, les blogs prennent toute la largeur */
+@media (max-width: 768px) {
+  .col-md-4 {
+    width: 100%; /* Une seule colonne par ligne */
+  }
+}
+
+/* Espacement entre les colonnes */
+@media (max-width: 576px) {
+  .col-md-4 {
+    margin-bottom: 15px;
+  }
+}
+#blogT{
+  text-align: center;
+  font-size: 3rem;
+  padding-top: 20px;
+}
+.testimonials-section {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: #ddf3ff;
+}
+
+.testimonials-section h2 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.underline {
+  width: 60px;
+  height: 4px;
+  background-color: #3f82f7;
+  margin: 0 auto 40px;
+  border-radius: 2px;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.testimonial-card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+  text-align: left;
+}
+
+.testimonial-card img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.testimonial-card p {
+  font-style: italic;
+  font-size: 15px;
+  color: #444;
+  margin-bottom: 10px;
+}
+
+.testimonial-card strong {
+  font-weight: bold;
+  color:#222;
+}
+.footer {
+  background-color: #1976D2;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+  font-size: 0.875rem;
+}
+
+/* Contenu du footer */
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Texte du footer */
+.footer-text {
+  margin-bottom: 15px;
+}
+
+/* Liens dans le footer */
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.footer-link {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 400;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+}
+.appbar{
+  position: fixed !important;
+
+}
+/* Style pour la Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 97%;
+  background-color: #1976D2; /* Couleur de fond bleu */
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  z-index: 1000; /* Assure que la navbar est au-dessus des autres éléments */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre subtile pour l'effet visuel */
+}
+
+.navbar .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.navbar .nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px; /* Espace entre les liens du menu */
+  margin: 0;
+}
+
+.navbar .nav-links li {
+  display: inline-block;
+}
+
+.navbar .nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.navbar .nav-links a:hover {
+  background-color: #1565C0; /* Effet au survol */
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.navbar .auth-buttons {
+  display: flex;
+  gap: 7px;
+}
+
+.navbar .auth-buttons .btn {
+  padding: 8px 15px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.navbar .auth-buttons .login {
+  background-color: #0288D1; /* Couleur du bouton Login */
+  color: white;
+}
+
+.navbar .auth-buttons .signup {
+  background-color: #01579B; /* Couleur du bouton Sign Up */
+  color: white;
+}
+
+.navbar .auth-buttons .btn:hover {
+  opacity: 0.8; /* Effet de survol sur les boutons */
+}
