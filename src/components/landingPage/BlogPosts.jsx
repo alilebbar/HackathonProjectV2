@@ -1,10 +1,9 @@
 import React from "react";
 import { useEffect, useState } from "react";
 
-const BlogPosts = () => {
+const BlogPosts = (props) => {
   const [posts, setPosts] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem("user"));
   useEffect(() => {
 
     const fetchUser = async () => {
@@ -63,7 +62,7 @@ const BlogPosts = () => {
             />
             <h3>{post.title}</h3>
             <p>{post.text}</p>
-            {isAuthenticated ? (
+            {props.isAuthenticated ? (
               <button className="btn btn-primary" onClick={() => { deleteBlog(post._id) }} >Delete</button>
             ) : ""}
           </div>

@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Modal, Box, Snackbar, Alert } from "@mui/material";
 
-const Navbar = () => {
+const Navbar = (props) => {
   const [loginModalOpen, setLoginModalOpen] = useState(false);
   const [signinModalOpen, setSigninModalOpen] = useState(false);
   const [addBlogModalOpen, setAddBlogModalOpen] = useState(false);
   const [notificationOpen, setNotificationOpen] = useState(false);
-  const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem("user"));
 
   const handleOpenLogin = (state) => setLoginModalOpen(state);
   const handleOpenSignin = (state) => setSigninModalOpen(state);
@@ -48,7 +47,7 @@ const Navbar = () => {
       if (response.ok) {
         const userData = await response.json();
         localStorage.setItem("user", JSON.stringify(userData.token));
-        setIsAuthenticated(true);
+        props.setIsAuthenticated(true);
         setLoginModalOpen(false);
       } else {
         console.error("Login failed");
@@ -60,7 +59,7 @@ const Navbar = () => {
 
   const logoutFunction = () => {
     localStorage.removeItem("user");
-    setIsAuthenticated(false);
+    props.setIsAuthenticated(false);
     alert("Logout successful");
   };
 
@@ -104,7 +103,7 @@ const Navbar = () => {
           <li><a href="#contact">Contact</a></li>
         </ul>
         <div className="auth-buttons">
-          {isAuthenticated ? (
+          {props.isAuthenticated ? (
             <>
               <button onClick={() => handleAddBlogModalOpen(true)} className="btn">Add blogpost</button>
               <button onClick={logoutFunction} className="btn">Logout</button>
