@@ -7,7 +7,29 @@ const Navbar = () => {
   const [signinModalOpen, setSigninModalOpen] = useState(false);
   const handleOpenLogin = (state) => setLoginModalOpen(state);
   const handleOpenSignin = (state) => setSigninModalOpen(state);
+  const rejisterUser = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const data = {
+      username: formData.get("username"),
+      email: formData.get("email"),
+      password: formData.get("password"),
+      confirmPassword: formData.get("confirmPassword"),
+    };
+    try {
+      let response = await fetch("http://localhost:5000/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+    } catch (error) {
+      console.error("Error registering user:", error);
+      
+    }
 
+  }
 
   return (
     <>
@@ -151,6 +173,7 @@ const Navbar = () => {
               gap: '1.5rem',
               width: '100%',
             }}
+            onSubmit={rejisterUser}
           >
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               <label htmlFor="username" style={{ fontWeight: 'bold' }}>Username</label>
@@ -220,6 +243,7 @@ const Navbar = () => {
                   fontSize: '16px',
                   cursor: 'pointer',
                 }}
+
               >
                 Sign Up
               </button>
