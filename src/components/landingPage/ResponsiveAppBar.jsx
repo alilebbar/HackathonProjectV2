@@ -1,19 +1,22 @@
 import React, { useState } from "react";
-import { Modal, Box, Typography } from "@mui/material";
+import { Modal, Box } from "@mui/material";
 
 
 const Navbar = () => {
   const [loginModalOpen, setLoginModalOpen] = useState(false);
   const [signinModalOpen, setSigninModalOpen] = useState(false);
+  const [addBlogModalOpen, setAddBlogModalOpen] = useState(false);
+
   const handleOpenLogin = (state) => setLoginModalOpen(state);
   const handleOpenSignin = (state) => setSigninModalOpen(state);
+  const handleAddBlogModalOpen = (state) => setAddBlogModalOpen(state);
 
 
   return (
     <>
 
       <nav className="navbar" >
-        <div className="logo">MonLogo</div>
+        <div className="logo">TechEasy</div>
         <ul className="nav-links">
           <li><a href="#home">Home</a></li>
           <li><a href="#blog">Blog</a></li>
@@ -21,6 +24,7 @@ const Navbar = () => {
           <li><a href="#contact">Contact</a></li>
         </ul>
         <div className="auth-buttons">
+          <button onClick={() => handleAddBlogModalOpen(true)} className="btn">Add blogpost</button>
           <button onClick={() => handleOpenLogin(true)} className="btn login">Login</button>
           <button onClick={() => handleOpenSignin(true)} className="btn signup">Sign Up</button>
         </div>
@@ -238,6 +242,96 @@ const Navbar = () => {
                   color: 'white',
                 }}
                 onClick={() => handleOpenSignin(false)}
+              >
+                Cancel
+              </button>
+
+            </div>
+          </form>
+        </Box>
+      </Modal>
+      <Modal
+        open={addBlogModalOpen}
+        onClose={() => handleAddBlogModalOpen(false)}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box
+          sx={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: 400,
+            bgcolor: 'background.paper',
+            boxShadow: 24,
+            p: 4,
+            borderRadius: 2,
+          }}
+        >
+          <form
+            method="post"
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '1.5rem',
+              width: '100%',
+            }}
+          >
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+              <label htmlFor="username" style={{ fontWeight: 'bold' }}>Title</label>
+              <input
+                type="text"
+                name="username"
+                placeholder="Enter the title"
+                required
+                style={{
+                  padding: '10px',
+                  border: '1px solid #ccc',
+                  borderRadius: '5px',
+                  fontSize: '16px'
+                }}
+              />
+
+              <label htmlFor="email" style={{ fontWeight: 'bold' }}>Content</label>
+              <textarea style={{
+                padding: '10px',
+                border: '1px solid #ccc',
+                borderRadius: '5px',
+                fontSize: '16px',
+                resize: 'none'
+              }} rows={10} placeholder="Enter the content" name="content" id="">
+              </textarea>
+
+              <button
+                type="submit"
+                style={{
+                  backgroundColor: '#1976d2',
+                  color: 'white',
+                  padding: '10px',
+                  border: 'none',
+                  borderRadius: '5px',
+                  fontSize: '16px',
+                  cursor: 'pointer',
+                }}
+              >
+                Add
+              </button>
+            </div>
+
+            <div>
+              <button
+                type="button"
+                style={{
+                  backgroundColor: 'rgb(141, 0, 0)',
+                  border: 'none',
+                  padding: '8px 12px',
+                  borderRadius: '5px',
+                  cursor: 'pointer',
+                  width: '100%',
+                  color: 'white',
+                }}
+                onClick={() => handleAddBlogModalOpen(false)}
               >
                 Cancel
               </button>
