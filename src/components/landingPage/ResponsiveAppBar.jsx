@@ -14,9 +14,7 @@ const Navbar = () => {
     const formData = new FormData(e.target);
     const data = {
       username: formData.get("username"),
-      email: formData.get("email"),
-      password: formData.get("password"),
-      confirmPassword: formData.get("confirmPassword"),
+      password: formData.get("password")
     };
     try {
       let response = await fetch("http://localhost:5000/api/auth/register", {
@@ -28,9 +26,9 @@ const Navbar = () => {
       });
     } catch (error) {
       console.error("Error registering user:", error);
-      
+
     }
-  const handleAddBlogModalOpen = (state) => setAddBlogModalOpen(state);
+    const handleAddBlogModalOpen = (state) => setAddBlogModalOpen(state);
 
   }
 
